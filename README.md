@@ -1,33 +1,71 @@
-# Baton AI — Context Handoff for Repo-Native Agents
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Capitaine" width="120">
+</p>
 
-> *Generational context transfer. Agents hand off to agents seamlessly.*
+<h1 align="center">baton-ai</h1>
 
-## What It Is
+<p align="center">Generational context handoff for repo-native agents.</p>
 
-Baton implements the Universal Handoff Protocol for repo-native agents. When one agent finishes (or hits a boundary), it passes full context to the next — conversation history, knowledge, decisions, and intention. No information loss. No starting over.
+<p align="center">
+  <a href="https://github.com/Lucineer/baton-ai/issues">Issues</a> ·
+  <a href="#the-fleet">The Fleet</a>
+</p>
 
-## Key Features
+---
 
-- 🔄 **Seamless handoff**: Agent A → Agent B with full context
-- 🔒 **HMAC-signed**: Every handoff is cryptographically verified
-- 🎚️ **Privacy levels**: Public, shared, private
-- 📋 **Handoff object**: Standardized context format (conversation, knowledge, files, decisions)
-- 🤝 **Trust model**: Agents verify each other before accepting handoffs
+**Fleet service** · Powered by [Capitaine](https://github.com/Lucineer/capitaine) · [Cocapn](https://github.com/Lucineer/cocapn)
 
-## Use Cases
+A cocapn fleet service running on Cloudflare Workers.
 
-- Claude Code → Cocapn: Code writing hands off to long-term maintenance
-- PersonalLog → BusinessLog: Personal context flows to work context
-- MakerLog → FishingLog: Coding agent hands to domain specialist
-- Human → Agent: Half-finished task completed by agent
-- Agent → Human: Agent escalates decision boundary to captain
+## Quick Start
 
-## Status
+```bash
+gh repo fork Lucineer/baton-ai --clone
+cd baton-ai
+npx wrangler login
+npx wrangler deploy
+```
 
-📝 Handoff module implemented in makerlog-ai/src/a2a/handoff.ts. This repo is the standalone library.
+## The Fleet
 
-Author: Superinstance
+
+<details>
+<summary><strong>⚓ The Fleet</strong></summary>
+
+**Flagship vessels**
+
+- [cocapn.ai](https://github.com/Lucineer/capitaine)
+- [personallog.ai](https://github.com/Lucineer/personallog-ai)
+- [businesslog.ai](https://github.com/Lucineer/businesslog-ai)
+- [studylog.ai](https://github.com/Lucineer/studylog-ai)
+- [makerlog.ai](https://github.com/Lucineer/makerlog-ai)
+- [playerlog.ai](https://github.com/Lucineer/playerlog-ai)
+- [dmlog.ai](https://github.com/Lucineer/dmlog-ai)
+- [reallog.ai](https://github.com/Lucineer/reallog-ai)
+- [deckboss.ai](https://github.com/Lucineer/deckboss-ai)
+
+**Fleet services**
+
+- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+- [Git Agent (full)](https://github.com/Lucineer/git-agent)
+- [Cocapn Lite (minimal)](https://github.com/Lucineer/cocapn-lite)
+- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
+- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
+- [Dream Engine](https://github.com/Lucineer/dream-engine)
+- [Seed UI (5 layers)](https://github.com/Lucineer/seed-ui)
+
+**For power users**
+
+- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
+- [Cocapn (core platform)](https://github.com/Lucineer/cocapn)
+- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
+
+[View all 106 repos →](https://github.com/orgs/Lucineer/repositories)
+[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+
+</details>
+
 
 ## License
 
-MIT — Built with ❤️ by [Superinstance](https://github.com/superinstance) & [Lucineer](https://github.com/Lucineer) (DiGennaro et al.)
+MIT · Superinstance & Lucineer (DiGennaro et al.)
