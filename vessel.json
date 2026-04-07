@@ -1,0 +1,12 @@
+{
+  "name": "baton-ai",
+  "type": "cocapn-vessel",
+  "version": "1.0.0",
+  "category": "concept",
+  "capabilities": [
+    "context-handoff",
+    "agent-continuity"
+  ],
+  "fleet": "https://the-fleet.casey-digennaro.workers.dev",
+  "cocapn": "https://cocapn.ai"
+}
