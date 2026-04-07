@@ -1,71 +1,65 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Capitaine" width="120">
-</p>
+# baton-ai 🏃‍♂️
 
-<h1 align="center">baton-ai</h1>
+Generational context handoff for repository-native AI agents. Part of the Cocapn Fleet.
 
-<p align="center">Generational context handoff for repo-native agents.</p>
+A focused tool for persisting and passing an agent's understanding of your codebase across sessions, model swaps, or specialized agent handoffs.
 
-<p align="center">
-  <a href="https://github.com/Lucineer/baton-ai/issues">Issues</a> ·
-  <a href="#the-fleet">The Fleet</a>
-</p>
+**Live URL:** https://baton-ai.casey-digennaro.workers.dev
 
 ---
 
-**Fleet service** · Powered by [Capitaine](https://github.com/Lucineer/capitaine) · [Cocapn](https://github.com/Lucineer/cocapn)
+## Why it Exists
+Agent tools often tie working context to a single session or vendor. Baton provides a simple, persistent store for an agent's accumulated context, allowing you to iterate on logic, switch LLM providers, or orchestrate workflows without starting from scratch.
 
-A cocapn fleet service running on Cloudflare Workers.
+---
 
 ## Quick Start
+1. Fork this repository.
+2. Deploy to Cloudflare Workers: `npx wrangler deploy`
+3. Add your LLM API keys as secrets via the Cloudflare dashboard.
 
-```bash
-gh repo fork Lucineer/baton-ai --clone
-cd baton-ai
-npx wrangler login
-npx wrangler deploy
-```
+Visit your instance's `/setup` endpoint after deployment for guidance.
 
-## The Fleet
+---
 
+## How It Works
+Baton provides a KV-backed storage layer for agent context, accessible via standard Fleet endpoints. Your instance stores context in your own Cloudflare KV namespace. API keys are stored as your Worker's secrets—we never see them.
 
-<details>
-<summary><strong>⚓ The Fleet</strong></summary>
+**One Honest Limitation:** Persistent context is stored in Cloudflare KV, which has a 10MB per-key size limit. It's designed for structured context, not entire codebases.
 
-**Flagship vessels**
+---
 
-- [cocapn.ai](https://github.com/Lucineer/capitaine)
-- [personallog.ai](https://github.com/Lucineer/personallog-ai)
-- [businesslog.ai](https://github.com/Lucineer/businesslog-ai)
-- [studylog.ai](https://github.com/Lucineer/studylog-ai)
-- [makerlog.ai](https://github.com/Lucineer/makerlog-ai)
-- [playerlog.ai](https://github.com/Lucineer/playerlog-ai)
-- [dmlog.ai](https://github.com/Lucineer/dmlog-ai)
-- [reallog.ai](https://github.com/Lucineer/reallog-ai)
-- [deckboss.ai](https://github.com/Lucineer/deckboss-ai)
+## Core Features
+- **Persistent Context:** KV-backed storage that survives agent restarts and updates.
+- **Vendor Agnostic:** Swap between supported LLM providers (DeepSeek, Moonshot, DeepInfra, SiliconFlow) without losing context.
+- **Zero Dependencies:** No npm packages. It's a single Cloudflare Worker.
+- **Fork-First:** You own and operate your instance upon deployment.
+- **Standard Fleet Endpoints:** `/health`, `/setup`, `/api/chat`, `/api/seed`
 
-**Fleet services**
+---
 
-- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
-- [Git Agent (full)](https://github.com/Lucineer/git-agent)
-- [Cocapn Lite (minimal)](https://github.com/Lucineer/cocapn-lite)
-- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
-- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
-- [Dream Engine](https://github.com/Lucineer/dream-engine)
-- [Seed UI (5 layers)](https://github.com/Lucineer/seed-ui)
+## BYOK Setup
+Add your LLM API keys as environment variables (secrets) in your Cloudflare Worker:
+- `DEEPSEEK_API_KEY`
+- `MOONSHOT_API_KEY`
+- `DEEPINFRA_API_KEY`
+- `SILICONFLOW_API_KEY`
 
-**For power users**
+Visit your instance's `/setup` endpoint to verify configuration.
 
-- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
-- [Cocapn (core platform)](https://github.com/Lucineer/cocapn)
-- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
+---
 
-[View all 106 repos →](https://github.com/orgs/Lucineer/repositories)
-[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+## Contributing
+Follow the Fleet's fork-first workflow: fork, test changes on your own instance, then open a pull request.
 
-</details>
+---
 
+**License:** MIT  
+**Attribution:** Superinstance & Lucineer (DiGennaro et al.)
 
-## License
+---
 
-MIT · Superinstance & Lucineer (DiGennaro et al.)
+<div align="center">
+  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> · 
+  <a href="https://cocapn.ai">Cocapn</a>
+</div>
